@@ -1,0 +1,33 @@
+{
+  "name": "coins-common-lib",
+  "version": "1.0.run_id",
+  "description": "",
+  "author": "",
+  "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "co:login": "aws codeartifact login --tool npm --repository skl.vc --domain skl-vc --domain-owner 188036318390",
+    "preinstall": "npm run co:login",
+    "build": "tsc",
+    "prepublishOnly": "npm run co:login && npm run build",
+    "postpublish": "rimraf dist",
+    "prettier-check": "prettier --check .",
+    "eslint": "eslint --ext .ts --color --fix src",
+    "lint": "prettier --check . && npm run eslint",
+    "lint-fix": "prettier --write . && npm run eslint",
+    "test": "echo \"Error: no test specified\""
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.40",
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.8.1",
+    "tsconfig-paths": "^4.0.0",
+    "typescript": "^4.7.3"
+  }
+}
